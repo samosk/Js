@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="App">
       <div class="banner-top">
-        <a href="/"> {/*Check if it crashes when uploaded to GitHub Pages*/}
+        <a href="/Js"> {/*Check if it crashes when uploaded to GitHub Pages*/}
           <h1 class="titel">Ronyas</h1>
           <h1 class="titel">Restaurang</h1>
         </a>

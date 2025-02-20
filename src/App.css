@@ -240,6 +240,38 @@ table,td,th {
   cursor: pointer;
 }
 
+.showmore button.more {
+    /* Reset button styles */
+    width: 100%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    
+    /* Center the text */
+    text-align: center;
+    
+    /* Match the original p.more styles */
+    color: black;
+    font-weight: 100;
+    margin: 0;
+    padding: 0;
+    font-size: 12pt;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    font-style: normal;
+    font-family: "Playfair Display SC", serif;
+}
+
+/* Remove the hover effect */
+.showmore button:hover {
+    background-color: transparent;
+}
+
+/* Keep the transition for the content */
+.item {
+    transition: all 0.3s ease-in-out;
+}
+
 @media only screen and (max-width: 700px) {
 	.nav-top {
 		display: none;

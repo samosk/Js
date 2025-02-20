@@ -1,10 +1,44 @@
 import './App.css';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    // Get all showmore elements
+    const showMoreButtons = document.querySelectorAll('.showmore');
+    
+    showMoreButtons.forEach(button => {
+        // Find the content section that precedes this button
+        const content = button.previousElementSibling;
+        if (!content) return; // Skip if no previous element exists
+        
+        // Get the existing paragraph element
+        const paragraph = button.querySelector('p.more');
+        if (!paragraph) return; // Skip if no paragraph exists
+        
+        // Create the button element to replace the paragraph
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'more';
+        toggleButton.textContent = 'Visa mindre ▲';
+        
+        // Replace the paragraph with the button
+        paragraph.parentNode.replaceChild(toggleButton, paragraph);
+        
+        // Add click event listener
+        toggleButton.addEventListener('click', () => {
+            // Toggle content visibility
+            const isVisible = content.style.display !== 'none';
+            content.style.display = isVisible ? 'none' : 'block';
+            
+            // Update button text and arrow
+            toggleButton.textContent = isVisible ? 'Visa mer ▼' : 'Visa mindre ▲';
+        });
+    });
+  }, []); // Empty dependency array means this runs once when component mounts
+
   return (
     <div className="App">
       <div className="banner-top">
-        <a href="/"> {/*Check if it crashes when uploaded to GitHub Pages*/}
+        <a href="/">
           <h1 className="titel">Ronyas</h1>
           <h1 className="titel">Restaurang</h1>
         </a>
@@ -75,6 +109,7 @@ function App() {
         </div>
         <h2 className="meny">Fler kategorier kommer i samband med JS</h2>
       </section>
+      
       <section id="öppettider">
         <h2 className="meny">Öppettider</h2>
         <h2 className="days">Måndag: 10:00 - 21:00</h2>
@@ -88,15 +123,18 @@ function App() {
         <h2>Ring och Beställ</h2>
         <h2>090 - 12 99 12</h2>
       </section>
+      
       <section id="dagens">
         <h2 className="meny">Dagens</h2>
         <h3>Finns via UmeåLunchGuiden</h3>
         <img src="Js/pizza-photo.jpg" alt="Närbild av pizza"/>
       </section>
+      
       <section id="hitta-hit">
         <h2 className="meny">Hitta hit</h2>
         <img src="Js/google-maps.png" alt="Karta, Skolgatan 65F Umeå"/>
       </section>
+      
       <section id="om-oss">
         <h2 className="meny">Om oss</h2>
         <div className="blue">
@@ -120,6 +158,7 @@ function App() {
           </p>
         </div>
       </section>
+      
       <div className="banner-bot">
         <div className="footer-section">
           <h2 className="footer">
@@ -146,7 +185,9 @@ function App() {
           </h4>
         </div>
         <div className="footer-section">
-          <a href="https://github.com/samosk/webtek/tree/main/Basic" target="_blank" rel='noreferrer'><img src="Js/github-mark-white.png" alt="GitHub Logga" className="github-logo"/></a>
+          <a href="https://github.com/samosk/webtek/tree/main/Basic" target="_blank" rel='noreferrer'>
+            <img src="Js/github-mark-white.png" alt="GitHub Logga" className="github-logo"/>
+          </a>
         </div>
       </div>
     </div>

@@ -3,18 +3,18 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <div class="banner-top">
-        <a href="/Js"> {/*Check if it crashes when uploaded to GitHub Pages*/}
-          <h1 class="titel">Ronyas</h1>
-          <h1 class="titel">Restaurang</h1>
+      <div className="banner-top">
+        <a href="/"> {/*Check if it crashes when uploaded to GitHub Pages*/}
+          <h1 className="titel">Ronyas</h1>
+          <h1 className="titel">Restaurang</h1>
         </a>
       </div>
 
       <nav>
         <div id="nav-top">
-          <button class="hamburger" aria-label="öppna meny">&#9776;</button>
+          <button className="hamburger" aria-label="öppna meny">&#9776;</button>
         </div>
-        <div class="nav-top">
+        <div className="nav-top">
           <ul>
             <li><a href="#meny">Meny</a></li>
             <li><a href="#öppettider">Öppettider</a></li>
@@ -25,81 +25,81 @@ function App() {
         </div>
       </nav>
       <video autoPlay loop muted>
-        <source src="pizza-video.mp4" type="video/mp4"/>
+        <source src="Js/pizza-video.mp4" type="video/mp4"/>
           Din webbläsare stödjer inte videoformat.
       </video>
 
       <section id="meny">
-        <h2 class="meny">Meny</h2>
+        <h2 className="meny">Meny</h2>
         <h2>Pizza</h2>
-        <div class="item">
+        <div className="item">
           <h3>Margherita</h3>
           <p>Tomatsås och ost</p>
-          <p class="price">114 kr</p>
+          <p className="price">114 kr</p>
         </div>
-        <div class="item">
+        <div className="item">
           <h3>Vesuvio</h3>
           <p>Tomatsås, ost och skinka</p>
-          <p class="price">119 kr</p>
+          <p className="price">119 kr</p>
         </div>
-        <div class="item">
+        <div className="item">
           <h3>Kebabpizza</h3>
           <p>Tomatsås, ost, kebab, lök, tomater, pepperoni och orientsås</p>
-          <p class="price">130 kr</p>
+          <p className="price">130 kr</p>
         </div>
-        <div class="item">
+        <div className="item">
           <h3>Capricciosa</h3>
           <p>Tomatsås, ost, skinka och champinjoner</p>
-          <p class="price">119 kr</p>
+          <p className="price">119 kr</p>
         </div>
-        <div class="showmore">
-          <p class="more">Visa mer &#x25BC;</p>
+        <div className="showmore">
+          <p className="more">Visa mer &#x25BC;</p>
         </div>
         <h2>Inbakade pizzor</h2>
-        <div class="item">
+        <div className="item">
           <h3>Calzone</h3>
           <p>Tomatsås, ost och skinka</p>
-          <p class="price">124 kr</p>
+          <p className="price">124 kr</p>
         </div>
-        <div class="showmore">
-          <p class="more">Visa mer &#x25BC;</p>
+        <div className="showmore">
+          <p className="more">Visa mer &#x25BC;</p>
         </div>
         <h2>Grill</h2>
-        <div class="item">
+        <div className="item">
           <h3>Grillbiff</h3>
           <p>Serveras med pommes frites och persiljesmör</p>
-          <p class="price">163 kr</p>
+          <p className="price">163 kr</p>
         </div>
-        <div class="showmore">
-          <p class="more">Visa mer &#x25BC;</p>
+        <div className="showmore">
+          <p className="more">Visa mer &#x25BC;</p>
         </div>
-        <h2 class="meny">Fler kategorier kommer i samband med JS</h2>
+        <h2 className="meny">Fler kategorier kommer i samband med JS</h2>
       </section>
       <section id="öppettider">
-        <h2 class="meny">Öppettider</h2>
-        <h2 class="days">Måndag: 10:00 - 21:00</h2>
-        <h2 class="days">Tisdag: 10:00 - 21:00</h2>
-        <h2 class="days">Onsdag: 10:00 - 21:00</h2>
-        <h2 class="days">Torsdag: 10:00 - 21:00</h2>
-        <h2 class="days">Fredag: 10:00 - 22:00</h2>
-        <h2 class="days">Lördag: 11:00 - 22:00</h2>
-        <h2 class="days">Söndag: 11:00 - 21:00</h2>
+        <h2 className="meny">Öppettider</h2>
+        <h2 className="days">Måndag: 10:00 - 21:00</h2>
+        <h2 className="days">Tisdag: 10:00 - 21:00</h2>
+        <h2 className="days">Onsdag: 10:00 - 21:00</h2>
+        <h2 className="days">Torsdag: 10:00 - 21:00</h2>
+        <h2 className="days">Fredag: 10:00 - 22:00</h2>
+        <h2 className="days">Lördag: 11:00 - 22:00</h2>
+        <h2 className="days">Söndag: 11:00 - 21:00</h2>
 
         <h2>Ring och Beställ</h2>
         <h2>090 - 12 99 12</h2>
       </section>
       <section id="dagens">
-        <h2 class="meny">Dagens</h2>
+        <h2 className="meny">Dagens</h2>
         <h3>Finns via UmeåLunchGuiden</h3>
-        <img src="pizza-photo.jpg" alt="Närbild av pizza"/>
+        <img src="Js/pizza-photo.jpg" alt="Närbild av pizza"/>
       </section>
       <section id="hitta-hit">
-        <h2 class="meny">Hitta hit</h2>
-        <img src="google-maps.png" alt="Karta, Skolgatan 65F Umeå"/>
+        <h2 className="meny">Hitta hit</h2>
+        <img src="Js/google-maps.png" alt="Karta, Skolgatan 65F Umeå"/>
       </section>
       <section id="om-oss">
-        <h2 class="meny">Om oss</h2>
-        <div class="blue">
+        <h2 className="meny">Om oss</h2>
+        <div className="blue">
           <p>
             Ronyas Restaurang på Vasaplan erbjuder bästa service och mat av hög kvalite. Kom och njut av våra rätter
             tillsammans med ett glas öl, vin eller cider.
@@ -120,33 +120,33 @@ function App() {
           </p>
         </div>
       </section>
-      <div class="banner-bot">
-        <div class="footer-section">
-          <h2 class="footer">
+      <div className="banner-bot">
+        <div className="footer-section">
+          <h2 className="footer">
             Ronyas Restaurang
           </h2>
-          <h3 class="footer">
+          <h3 className="footer">
             Skolgatan 65F
           </h3>
-          <h3 class="footer">
+          <h3 className="footer">
             Vasaplan Umeå
           </h3>
         </div>
-        <div class="footer-section">
-          <h2 class="footer">
+        <div className="footer-section">
+          <h2 className="footer">
             Kontakta oss
           </h2>
-          <h3 class="footer">
+          <h3 className="footer">
             Telefon: 090 - 12 99 12
           </h3>
         </div>
-        <div class="footer-section">
-          <h4 class="footer">
+        <div className="footer-section">
+          <h4 className="footer">
             ©2025 Ronyas Restaurang
           </h4>
         </div>
-        <div class="footer-section">
-          <a href="https://github.com/samosk/webtek/tree/main/Basic" target="_blank" rel='noreferrer'><img src="github-mark-white.png" alt="GitHub Logga" class="github-logo"/></a>
+        <div className="footer-section">
+          <a href="https://github.com/samosk/webtek/tree/main/Basic" target="_blank" rel='noreferrer'><img src="Js/github-mark-white.png" alt="GitHub Logga" className="github-logo"/></a>
         </div>
       </div>
     </div>

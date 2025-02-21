@@ -1,39 +1,83 @@
+// App.js
 import './App.css';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+
+// Menu components
+const MenuItem = ({ name, description, price }) => {
+  return (
+    <div className="item">
+      <h3>{name}</h3>
+      <p>{description}</p>
+      <p className="price">{price} kr</p>
+    </div>
+  );
+};
+
+const MenuSection = ({ category }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Add safety check
+  if (!category) return null;
+
+  const itemsToShow = isExpanded ? category.items : category.items.slice(0, 3);
+  const hasMoreItems = category.items.length > 3;
+
+  const handleExpandClick = (e) => {
+    // Only trigger if the click was directly on the button
+    if (e.target.className === 'more') {
+      setIsExpanded(!isExpanded);
+    }
+  };
+
+  return (
+    <div className="menu-section">
+      <h2>{category.name}</h2>
+      <div className="menu-items">
+        {itemsToShow.map((item, index) => (
+          <div key={index}>
+            <MenuItem {...item} />
+          </div>
+        ))}
+        {hasMoreItems && (
+          <div className="showmore">
+            <button
+              className="more"
+              onClick={handleExpandClick}
+            >
+              {isExpanded ? 'Visa mindre ▲' : 'Visa mer ▼'}
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
 
 function App() {
+  const [menuData, setMenuData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    // Get all showmore elements
-    const showMoreButtons = document.querySelectorAll('.showmore');
-    
-    showMoreButtons.forEach(button => {
-        // Find the content section that precedes this button
-        const content = button.previousElementSibling;
-        if (!content) return; // Skip if no previous element exists
-        
-        // Get the existing paragraph element
-        const paragraph = button.querySelector('p.more');
-        if (!paragraph) return; // Skip if no paragraph exists
-        
-        // Create the button element to replace the paragraph
-        const toggleButton = document.createElement('button');
-        toggleButton.className = 'more';
-        toggleButton.textContent = 'Visa mindre ▲';
-        
-        // Replace the paragraph with the button
-        paragraph.parentNode.replaceChild(toggleButton, paragraph);
-        
-        // Add click event listener
-        toggleButton.addEventListener('click', () => {
-            // Toggle content visibility
-            const isVisible = content.style.display !== 'none';
-            content.style.display = isVisible ? 'none' : 'block';
-            
-            // Update button text and arrow
-            toggleButton.textContent = isVisible ? 'Visa mer ▼' : 'Visa mindre ▲';
-        });
-    });
-  }, []); // Empty dependency array means this runs once when component mounts
+    console.log('Starting to fetch menu data');
+
+    fetch('Js/menu.json')
+      .then(response => {
+        console.log('Response received:', response);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Menu data loaded successfully:', data);
+        setMenuData(data);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error('Detailed error when loading menu:', error);
+        setIsLoading(false);
+      });
+  }, []);
 
   return (
     <div className="App">
@@ -58,58 +102,28 @@ function App() {
           </ul>
         </div>
       </nav>
+
       <video autoPlay loop muted>
-        <source src="Js/pizza-video.mp4" type="video/mp4"/>
-          Din webbläsare stödjer inte videoformat.
+        <source src="Js/pizza-video.mp4" type="video/mp4" />
+        Din webbläsare stödjer inte videoformat.
       </video>
 
       <section id="meny">
         <h2 className="meny">Meny</h2>
-        <h2>Pizza</h2>
-        <div className="item">
-          <h3>Margherita</h3>
-          <p>Tomatsås och ost</p>
-          <p className="price">114 kr</p>
-        </div>
-        <div className="item">
-          <h3>Vesuvio</h3>
-          <p>Tomatsås, ost och skinka</p>
-          <p className="price">119 kr</p>
-        </div>
-        <div className="item">
-          <h3>Kebabpizza</h3>
-          <p>Tomatsås, ost, kebab, lök, tomater, pepperoni och orientsås</p>
-          <p className="price">130 kr</p>
-        </div>
-        <div className="item">
-          <h3>Capricciosa</h3>
-          <p>Tomatsås, ost, skinka och champinjoner</p>
-          <p className="price">119 kr</p>
-        </div>
-        <div className="showmore">
-          <p className="more">Visa mer &#x25BC;</p>
-        </div>
-        <h2>Inbakade pizzor</h2>
-        <div className="item">
-          <h3>Calzone</h3>
-          <p>Tomatsås, ost och skinka</p>
-          <p className="price">124 kr</p>
-        </div>
-        <div className="showmore">
-          <p className="more">Visa mer &#x25BC;</p>
-        </div>
-        <h2>Grill</h2>
-        <div className="item">
-          <h3>Grillbiff</h3>
-          <p>Serveras med pommes frites och persiljesmör</p>
-          <p className="price">163 kr</p>
-        </div>
-        <div className="showmore">
-          <p className="more">Visa mer &#x25BC;</p>
-        </div>
-        <h2 className="meny">Fler kategorier kommer i samband med JS</h2>
+        {isLoading ? (
+          <p>Laddar meny...</p>
+        ) : menuData && menuData.categories ? (
+          menuData.categories.map((category, index) => (
+            <MenuSection key={index} category={category} />
+          ))
+        ) : (
+          <div>
+            <p>Kunde inte ladda menyn</p>
+            <p>Kontrollera att menu.json finns i public-mappen</p>
+          </div>
+        )}
       </section>
-      
+
       <section id="öppettider">
         <h2 className="meny">Öppettider</h2>
         <h2 className="days">Måndag: 10:00 - 21:00</h2>
@@ -123,18 +137,18 @@ function App() {
         <h2>Ring och Beställ</h2>
         <h2>090 - 12 99 12</h2>
       </section>
-      
+
       <section id="dagens">
         <h2 className="meny">Dagens</h2>
         <h3>Finns via UmeåLunchGuiden</h3>
-        <img src="Js/pizza-photo.jpg" alt="Närbild av pizza"/>
+        <img src="Js/pizza-photo.jpg" alt="Närbild av pizza" />
       </section>
-      
+
       <section id="hitta-hit">
         <h2 className="meny">Hitta hit</h2>
-        <img src="Js/google-maps.png" alt="Karta, Skolgatan 65F Umeå"/>
+        <img src="Js/google-maps.png" alt="Karta, Skolgatan 65F Umeå" />
       </section>
-      
+
       <section id="om-oss">
         <h2 className="meny">Om oss</h2>
         <div className="blue">
@@ -158,7 +172,7 @@ function App() {
           </p>
         </div>
       </section>
-      
+
       <div className="banner-bot">
         <div className="footer-section">
           <h2 className="footer">
@@ -186,7 +200,7 @@ function App() {
         </div>
         <div className="footer-section">
           <a href="https://github.com/samosk/webtek/tree/main/Basic" target="_blank" rel='noreferrer'>
-            <img src="Js/github-mark-white.png" alt="GitHub Logga" className="github-logo"/>
+            <img src="Js/github-mark-white.png" alt="GitHub Logga" className="github-logo" />
           </a>
         </div>
       </div>

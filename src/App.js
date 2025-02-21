@@ -1,17 +1,8 @@
 // App.js
 import './App.css';
 import { useState, useEffect } from 'react';
+import {MenuItem} from './MenuComponents.js'
 
-// Menu components
-const MenuItem = ({ name, description, price }) => {
-  return (
-    <div className="item">
-      <h3>{name}</h3>
-      <p>{description}</p>
-      <p className="price">{price} kr</p>
-    </div>
-  );
-};
 
 const MenuSection = ({ category }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -82,7 +73,7 @@ function App() {
   return (
     <div className="App">
       <div className="banner-top">
-        <a href="/">
+        <a href="/Js">
           <h1 className="titel">Ronyas</h1>
           <h1 className="titel">Restaurang</h1>
         </a>
@@ -199,7 +190,7 @@ function App() {
           </h4>
         </div>
         <div className="footer-section">
-          <a href="https://github.com/samosk/webtek/tree/main/Basic" target="_blank" rel='noreferrer'>
+          <a href="https://github.com/samosk/Js" target="_blank" rel='noreferrer'>
             <img src="Js/github-mark-white.png" alt="GitHub Logga" className="github-logo" />
           </a>
         </div>

@@ -131,9 +131,9 @@ img {
     margin: 0;
     margin-left: 20vw;
     padding: 0;
-	padding-right: 20vw;
+    padding-right: 20vw;
     width: 100%;
-	max-width: 100%;
+    max-width: 100%;
 }
 
 .banner-top {
@@ -213,6 +213,7 @@ video {
     font-size: 16pt;
     background-color: transparent;
     cursor: pointer;
+    color: white;
 }
 
 /* Menu section specific styles */
@@ -253,20 +254,53 @@ video {
     margin-top: -20px;
 }
 
-@media only screen and (max-width: 700px) {
-    .nav-top {
+@media only screen and (max-width: 800px) {
+    .nav-top,
+    video,
+    source {
         display: none;
     }
+    .nav-top.nav-mobile-open {
+        display: block;
+    }
+
+    nav {
+        height: fit-content;
+        background-color: #0072BB;
+    }
+
+    .nav-top .mobile-menu {
+        position: static;
+        flex-direction: column;
+        transform: none;
+        width: 100%;
+        background: none;
+        padding: 0;
+    }
+
+    .nav-top .mobile-menu li {
+        margin: 1rem 0;
+    }
+
     #nav-top {
         display: flex;
         justify-content: flex-end;
         padding-top: 1vh;
         padding-right: 3vw;
+        position: relative;
+        z-index: 1001;
     }
+
+    .hamburger {
+        padding: 0.5rem;
+    }
+
     .banner-bot {
         flex-direction: column;
         height: fit-content;
+        margin-bottom: 5vh;
     }
+
     .footer-section {
         margin-top: 5vh;
     }

@@ -2,8 +2,8 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { MenuItem } from './MenuComponents.js';
+import MobileNav from './MobileNav';
 // import PopupButton from './PopupButton.js';
-
 
 const MenuSection = ({ category }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -80,23 +80,8 @@ function App() {
         </a>
       </div>
 
-      {/* <div>
-        <PopupButton />
-      </div> */}
-
       <nav>
-        <div id="nav-top">
-          <button className="hamburger" aria-label="öppna meny">&#9776;</button>
-        </div>
-        <div className="nav-top">
-          <ul>
-            <li><a href="#meny">Meny</a></li>
-            <li><a href="#öppettider">Öppettider</a></li>
-            <li><a href="#dagens">Dagens</a></li>
-            <li><a href="#hitta-hit">Hitta hit</a></li>
-            <li><a href="#om-oss">Om oss</a></li>
-          </ul>
-        </div>
+        <MobileNav />
       </nav>
 
       <video autoPlay loop muted>

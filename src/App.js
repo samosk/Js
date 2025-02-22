@@ -1,7 +1,8 @@
 // App.js
 import './App.css';
 import { useState, useEffect } from 'react';
-import {MenuItem} from './MenuComponents.js'
+import { MenuItem } from './MenuComponents.js';
+// import PopupButton from './PopupButton.js';
 
 
 const MenuSection = ({ category }) => {
@@ -9,7 +10,7 @@ const MenuSection = ({ category }) => {
 
   // Add safety check
   if (!category) return null;
-
+  // Only show the first three items in each category before the button is pressed
   const itemsToShow = isExpanded ? category.items : category.items.slice(0, 3);
   const hasMoreItems = category.items.length > 3;
 
@@ -78,6 +79,10 @@ function App() {
           <h1 className="titel">Restaurang</h1>
         </a>
       </div>
+
+      {/* <div>
+        <PopupButton />
+      </div> */}
 
       <nav>
         <div id="nav-top">

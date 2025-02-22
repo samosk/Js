@@ -3,6 +3,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { MenuItem } from './MenuComponents.js';
 import MobileNav from './MobileNav';
+import config from './config';
 // import PopupButton from './PopupButton.js';
 
 const MenuSection = ({ category }) => {
@@ -51,8 +52,9 @@ function App() {
 
   useEffect(() => {
     console.log('Starting to fetch menu data');
+    console.log('Current environment config:', config);
 
-    fetch('Js/menu.json')
+    fetch(`${config.assetPath}/menu.json`)
       .then(response => {
         console.log('Response received:', response);
         if (!response.ok) {
@@ -74,7 +76,7 @@ function App() {
   return (
     <div className="App">
       <div className="banner-top">
-        <a href="/Js">
+        <a href={config.basePath}>
           <h1 className="titel">Ronyas</h1>
           <h1 className="titel">Restaurang</h1>
         </a>
@@ -85,7 +87,7 @@ function App() {
       </nav>
 
       <video autoPlay loop muted>
-        <source src="Js/pizza-video.mp4" type="video/mp4" />
+        <source src={`${config.assetPath}/pizza-video.mp4`} type="video/mp4" />
         Din webbläsare stödjer inte videoformat.
       </video>
 
@@ -122,12 +124,12 @@ function App() {
       <section id="dagens">
         <h2 className="meny">Dagens</h2>
         <h3>Finns via UmeåLunchGuiden</h3>
-        <img src="Js/pizza-photo.jpg" alt="Närbild av pizza" />
+        <img src={`${config.assetPath}/pizza-photo.jpg`} alt="Närbild av pizza" />
       </section>
 
       <section id="hitta-hit">
         <h2 className="meny">Hitta hit</h2>
-        <img src="Js/google-maps.png" alt="Karta, Skolgatan 65F Umeå" />
+        <img src={`${config.assetPath}/google-maps.png`} alt="Karta, Skolgatan 65F Umeå" />
       </section>
 
       <section id="om-oss">
@@ -181,7 +183,7 @@ function App() {
         </div>
         <div className="footer-section">
           <a href="https://github.com/samosk/Js" target="_blank" rel='noreferrer'>
-            <img src="Js/github-mark-white.png" alt="GitHub Logga" className="github-logo" />
+            <img src={`${config.assetPath}/github-mark-white.png`} alt="GitHub Logga" className="github-logo" />
           </a>
         </div>
       </div>

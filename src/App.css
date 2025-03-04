@@ -1,4 +1,13 @@
 /* App.css */
+:root {
+    --blue: #0072BB;
+    --blue-d: #004975;
+    --white: #ffffff;
+    --white-o: rgba(255,255,255,0.3);
+    --black: #121212;
+    --black-o: rgba(18,18,18,0.5);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -112,7 +121,7 @@ ul {
     transform: translateX(-50%);
     z-index: 1000;
     color: white;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--black-o);
     padding-right: 10vw;
     padding-left: 10vw;
 }
@@ -135,7 +144,7 @@ img {
 }
 
 .banner-top {
-    background-color: #0072BB;
+    background-color: var(--blue);
     height: 16vh;
     display: flex;
     justify-content: center;
@@ -147,7 +156,7 @@ img {
 }
 
 .banner-bot {
-    background-color: #0072BB;
+    background-color: var(--blue);
     height: 24vh;
     display: flex;
     justify-content: center;
@@ -186,7 +195,7 @@ video {
 }
 
 .blue {
-    background-color: #0072BB;
+    background-color: var(--blue);
     margin-left: 20vw;
     margin-top: 2vh;
 }
@@ -252,7 +261,7 @@ video {
     top: 8px;
     left: 10px;
     z-index: 1001;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--black-o);
     color: white;
     border: none;
     border-radius: 50%;
@@ -272,11 +281,11 @@ video {
 
 /* Dark Mode Styles */
 body.dark-mode {
-    background-color: #121212;
+    background-color: var(--black);
 }
 
 body.dark-mode section {
-    background-color: #1e1e1e;
+    background-color: var(--black);
     color: #e0e0e0;
 }
 
@@ -289,7 +298,7 @@ body.dark-mode p {
 
 body.dark-mode .banner-top,
 body.dark-mode .banner-bot {
-    background-color: #004975;
+    background-color: var(--blue-d);
 }
 
 body.dark-mode .item,
@@ -299,11 +308,11 @@ body.dark-mode .showmore {
 
 body.dark-mode ul,
 body.dark-mode .theme-toggle {
-    background-color: rgba(255,255,255,0.3);
+    background-color: var(--white-o);
 }
 
 body.dark-mode .blue {
-    background-color: #004975;
+    background-color: var(--blue-d);
 }
 
 body.dark-mode .showmore button.more {
@@ -313,11 +322,11 @@ body.dark-mode .showmore button.more {
 
 /* Light Mode (default) - specifically setting these to ensure proper theme switching */
 body.light-mode {
-    background-color: #0072BB;
+    background-color: var(--blue);
 }
 
 body.light-mode section {
-    background-color: white;
+    background-color: var(--white);
 }
 
 body.light-mode h1,
@@ -348,7 +357,7 @@ body.light-mode .blue p {
 
     nav {
         height: fit-content;
-        background-color: #0072BB;
+        background-color: var(--blue);
     }
 
     .nav-top .mobile-menu {
@@ -394,6 +403,7 @@ body.light-mode .blue p {
         color: black;
         text-decoration: none;
     }
+    .theme-toggle,
     .showmore,
     #hitta-hit,
     #nav-top,

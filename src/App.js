@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { MenuItem } from './MenuComponents.js';
 import MobileNav from './MobileNav';
 import config from './config';
+import ThemeToggle from './ThemeToggle.js';
 // import PopupButton from './PopupButton.js';
 
 const MenuSection = ({ category }) => {
@@ -75,6 +76,7 @@ function App() {
 
   return (
     <div className="App">
+      <ThemeToggle/>
       <div className="banner-top">
         <a href={config.basePath}>
           <h1 className="titel">Ronyas</h1>

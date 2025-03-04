@@ -14,12 +14,10 @@ body {
     padding: 0;
     text-align: center;
     font-family: "Playfair Display SC", serif;
-    background-color: #0072BB;
 }
 
 section {
     display: block;
-    background-color: white;
     padding-right: 20vw;
 }
 
@@ -216,15 +214,6 @@ video {
     color: white;
 }
 
-/* Menu section specific styles */
-.menu-section {
-    background-color: white;
-}
-
-.menu-items {
-    background-color: white;
-}
-
 .showmore button.more {
     width: auto;
     padding: 5px 20px;
@@ -252,6 +241,99 @@ video {
 /* Adjust spacing for öppettider section */
 #öppettider {
     margin-top: -20px;
+}
+
+
+/* Add these CSS rules to your App.css file */
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 8px;
+    left: 10px;
+    z-index: 1001;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+}
+
+body.dark-mode section {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode p {
+    color: #e0e0e0;
+}
+
+body.dark-mode .banner-top,
+body.dark-mode .banner-bot {
+    background-color: #004975;
+}
+
+body.dark-mode .item,
+body.dark-mode .showmore {
+    border-top: 2px solid #555;
+}
+
+body.dark-mode ul,
+body.dark-mode .theme-toggle {
+    background-color: rgba(255,255,255,0.3);
+}
+
+body.dark-mode .blue {
+    background-color: #004975;
+}
+
+body.dark-mode .showmore button.more {
+    border: 1px solid #555;
+    color: #e0e0e0;
+}
+
+/* Light Mode (default) - specifically setting these to ensure proper theme switching */
+body.light-mode {
+    background-color: #0072BB;
+}
+
+body.light-mode section {
+    background-color: white;
+}
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode p {
+    color: black;
+}
+
+body.light-mode .titel,
+body.light-mode .footer {
+    color: white;
+}
+
+body.light-mode .blue p {
+    color: white;
 }
 
 @media only screen and (max-width: 800px) {

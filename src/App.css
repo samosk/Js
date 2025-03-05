@@ -354,10 +354,15 @@ body.light-mode .blue p {
     .nav-top.nav-mobile-open {
         display: block;
     }
-
     nav {
         height: fit-content;
+    }
+
+    body.light-mode nav {
         background-color: var(--blue);
+    }
+    body.dark-mode nav {
+        background-color: var(--blue-d);
     }
 
     .nav-top .mobile-menu {

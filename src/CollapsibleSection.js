@@ -1,4 +1,4 @@
-// collapsible.js
+// CollapsibleSection.js
 function initializeCollapsibleSections() {
     // Get all showmore elements
     const showMoreButtons = document.querySelectorAll('.showmore');
@@ -27,29 +27,6 @@ function initializeCollapsibleSections() {
         });
     });
 }
-
-// Add CSS to the page
-const style = document.createElement('style');
-style.textContent = `
-    .showmore button {
-        width: 100%;
-        border: none;
-        background: none;
-        cursor: pointer;
-        padding: 8px 0;
-        color: inherit;
-        text-align: left;
-    }
-
-    .showmore button:hover {
-        background-color: rgba(0, 0, 0, 0.05);
-    }
-
-    .item {
-        transition: all 0.3s ease-in-out;
-    }
-`;
-document.head.appendChild(style);
 
 // Initialize when the DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeCollapsibleSections);

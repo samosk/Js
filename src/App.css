@@ -279,6 +279,38 @@ video {
     transform: scale(1.1);
 }
 
+/* Video Toggle Button */
+.video-toggle {
+    position: absolute;
+    /* top: 50%; */
+    right: 20px;
+    transform: translateY(-75%);
+    z-index: 1001;
+    background-color: var(--black-o);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Playfair Display SC", serif;
+}
+
+.video-toggle:hover {
+    /* transform: scale(1.05); */
+    background-color: rgba(18,18,18,0.7);
+}
+
+/* Dark Mode style for the video toggle */
+body.dark-mode .video-toggle {
+    background-color: var(--white-o);
+    color: white;
+}
+
+body.dark-mode .video-toggle:hover {
+    background-color: rgba(255,255,255,0.5);
+}
 /* Dark Mode Styles */
 body.dark-mode {
     background-color: var(--black);
@@ -365,6 +397,10 @@ body.light-mode .blue p {
         background-color: var(--blue-d);
     }
 
+    .video-toggle {
+        display: none;
+    }
+
     .nav-top .mobile-menu {
         position: static;
         flex-direction: column;
@@ -408,6 +444,7 @@ body.light-mode .blue p {
         color: black;
         text-decoration: none;
     }
+    .video-toggle,
     .theme-toggle,
     .showmore,
     #hitta-hit,

@@ -5,6 +5,7 @@ import { MenuItem } from './MenuComponents.js';
 import MobileNav from './MobileNav';
 import config from './config';
 import ThemeToggle from './ThemeToggle.js';
+import VideoToggle from './VideoToggle';
 // import PopupButton from './PopupButton.js';
 
 const MenuSection = ({ category }) => {
@@ -50,6 +51,11 @@ const MenuSection = ({ category }) => {
 function App() {
   const [menuData, setMenuData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isVideoOn, setIsVideoOn] = useState(true);
+
+  const toggleVideo = () => {
+    setIsVideoOn(!isVideoOn);
+  };
 
   useEffect(() => {
     console.log('Starting to fetch menu data');
@@ -77,21 +83,25 @@ function App() {
   return (
     <div className="App">
       <ThemeToggle/>
+      
       <div className="banner-top">
         <a href={config.basePath}>
           <h1 className="titel">Ronyas</h1>
           <h1 className="titel">Restaurang</h1>
         </a>
+        <VideoToggle isVideoOn={isVideoOn} toggleVideo={toggleVideo} />
       </div>
 
       <nav>
         <MobileNav />
       </nav>
 
-      <video autoPlay loop muted>
-        <source src={`${config.assetPath}/pizza-video.mp4`} type="video/mp4" />
-        Din webbläsare stödjer inte videoformat.
-      </video>
+      {isVideoOn && (
+        <video autoPlay loop muted>
+          <source src={`${config.assetPath}/pizza-video.mp4`} type="video/mp4" />
+          Din webbläsare stödjer inte videoformat.
+        </video>
+      )}
 
       <section id="meny">
         <h2 className="meny">Meny</h2>
